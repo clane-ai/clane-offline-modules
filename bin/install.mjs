@@ -121,8 +121,10 @@ const settings = {
 
 say(`ok  ${key}: xlsx ${m.xlsx.version}, sqlite3 ${m.sqlite3.version}, prisma engines ${m.prisma.version} (${prismaTarget}) checked and unpacked in ${store}`);
 
+// On Windows npm is a .cmd file, so it runs through a shell, which splits an unquoted path at a space.
+const quote = (a) => (process.platform === "win32" && /[\s&()^%!]/.test(a) ? `"${a}"` : a);
 const npm = (npmArgs, cwd) =>
-  spawnSync("npm", npmArgs, { cwd, stdio: "inherit", shell: process.platform === "win32", env: { ...process.env, ...settings } });
+  spawnSync("npm", npmArgs.map(quote), { cwd, stdio: "inherit", shell: process.platform === "win32", env: { ...process.env, ...settings } });
 
 const printSettings = () => {
   say("\nKeep these set in the shell you run Prisma from (npm run dev, prisma generate, prisma migrate):\n");

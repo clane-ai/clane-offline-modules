@@ -36,6 +36,12 @@ Keep the Prisma settings set in the shell you start the project from (`prisma ge
 
 `npx github:...` needs `git` installed (npm uses it to fetch from GitHub) and access to github.com. If either is missing, download the repository as a zip (**Code → Download ZIP**), unzip it, and run `node bin/install.mjs install <project folder>`.
 
+### On Windows
+
+- Install Git for Windows and Node (`winget install Git.Git` and `winget install OpenJS.NodeJS.LTS`), then open a new PowerShell window.
+- If PowerShell says *running scripts is disabled on this system* for `npx`, run the same command with `npx.cmd` instead of `npx`.
+- Behind a company proxy, set it the way npm expects (`npm config set proxy ...` and `npm config set https-proxy ...`) before running the installer. Only the registry and GitHub need to be reachable.
+
 ### Options
 
 | | |
