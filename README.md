@@ -12,29 +12,33 @@ These are the versions Clane Analytics 1.13.x pins. Everything else in a project
 
 ## Use it
 
-You need Node 18 or later and a project folder that has a `package.json`. Run this from the project folder:
+You need Node 18 or later and a project folder that has a `package.json`. Run the command from the project folder, naming the module you want:
 
 ```
-npx github:clane-ai/clane-offline-modules install
+npx github:clane-ai/clane-offline-modules install xlsx
+npx github:clane-ai/clane-offline-modules install sqlite3
+npx github:clane-ai/clane-offline-modules install prisma
 ```
 
-Or name the folder:
+Name one, two or all three. With no name it does all three. Each command puts only the named modules' files in place and then runs `npm install` in the project, so a module you did not name downloads the normal way. If `npm install` stops on a module you did not name, run the command again for that one.
+
+To use another folder than the current one, add `--project <folder>`:
 
 ```
-npx github:clane-ai/clane-offline-modules install C:\path\to\project
+npx github:clane-ai/clane-offline-modules install prisma --project C:\path\to\project
 ```
 
-The installer detects the platform, checks every file against `manifest.json`, unpacks them under `~/.clane-offline-modules`, then runs `npm install` in the project with the settings below. It prints them again at the end.
+The installer detects the platform, checks every file against `manifest.json`, unpacks them under `~/.clane-offline-modules`, then runs `npm install` with the settings below.
 
-| Setting | What it does |
-|---|---|
-| `npm_config_sqlite3_local_prebuilds` | makes sqlite3 use the local binary instead of downloading one |
-| `PRISMA_QUERY_ENGINE_LIBRARY`, `PRISMA_SCHEMA_ENGINE_BINARY` | make Prisma use the local engines instead of downloading them |
-| `PRISMA_ENGINES_CHECKSUM_IGNORE_MISSING=1` | stops Prisma asking its server for a checksum file |
+| Module | Setting | What it does |
+|---|---|---|
+| `xlsx` | none (the tarball is added to npm's cache) | npm finds it by its checksum instead of downloading it |
+| `sqlite3` | `npm_config_sqlite3_local_prebuilds` | sqlite3 uses the local binary instead of downloading one (only needed during the install) |
+| `prisma` | `PRISMA_QUERY_ENGINE_LIBRARY`, `PRISMA_SCHEMA_ENGINE_BINARY`, `PRISMA_ENGINES_CHECKSUM_IGNORE_MISSING=1` | Prisma uses the local engines instead of downloading them |
 
-Keep the Prisma settings set in the shell you start the project from (`prisma generate` and `prisma migrate` need them too). `install` prints the exact lines to paste, with `setx` for Windows.
+After `install prisma` (or all three), keep the Prisma settings set in the shell you start the project from: `prisma generate` and `prisma migrate` need them too. The installer prints the exact lines to paste, with `setx` for Windows.
 
-`npx github:...` needs `git` installed (npm uses it to fetch from GitHub) and access to github.com. If either is missing, download the repository as a zip (**Code → Download ZIP**), unzip it, and run `node bin/install.mjs install <project folder>`.
+`npx github:...` needs `git` installed (npm uses it to fetch from GitHub) and access to github.com. If either is missing, download the repository as a zip (**Code → Download ZIP**), unzip it, and run `node bin/install.mjs install xlsx` (and so on) from the project folder.
 
 ### On Windows
 
@@ -46,9 +50,10 @@ Keep the Prisma settings set in the shell you start the project from (`prisma ge
 
 | | |
 |---|---|
-| `install --ci` | `npm ci` instead of `npm install` (it deletes `node_modules` first) |
-| `install --no-npm`, or `env` | put the files in place and print the settings only |
-| `install --force` | go on when the project's `package-lock.json` asks for other versions of these modules (their files are then not used) |
+| `--project <folder>` | the project folder (default: the current folder) |
+| `--ci` | `npm ci` instead of `npm install` (it deletes `node_modules` first) |
+| `--no-npm`, or the `env` command | put the files in place and print the settings only |
+| `--force` | go on when the project's `package-lock.json` asks for other versions of the named modules (their files are then not used) |
 
 ## What is included
 
