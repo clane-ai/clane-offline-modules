@@ -7,6 +7,7 @@ Some npm modules download a file from somewhere other than the npm registry whil
 | `xlsx` (SheetJS) | 0.20.3 | its own tarball | `cdn.sheetjs.com` |
 | `sqlite3` | 6.0.1 | a prebuilt native binary | GitHub release files |
 | `prisma` / `@prisma/engines` | 6.19.3 | the query and schema engines | `binaries.prisma.sh` |
+| `odbc` | 2.5.0 | a prebuilt native binary | GitHub release files (IBM/node-odbc) |
 
 These are the versions Clane Analytics 1.13.x pins. Everything else in a project still comes from the npm registry.
 
@@ -18,9 +19,10 @@ You need Node 18 or later and a project folder that has a `package.json`. Run th
 npx github:clane-ai/clane-offline-modules install xlsx
 npx github:clane-ai/clane-offline-modules install sqlite3
 npx github:clane-ai/clane-offline-modules install prisma
+npx github:clane-ai/clane-offline-modules install odbc
 ```
 
-Name one, two or all three. With no name it does all three. Each command puts only the named modules' files in place and then runs `npm install` in the project, so a module you did not name downloads the normal way. If `npm install` stops on a module you did not name, run the command again for that one.
+Name one or more. With no name it does all four. Each command puts only the named modules' files in place and then runs `npm install` in the project, so a module you did not name downloads the normal way. If `npm install` stops on a module you did not name, run the command again for that one.
 
 To use another folder than the current one, add `--project <folder>`:
 
@@ -34,6 +36,7 @@ The installer detects the platform, checks every file against `manifest.json`, u
 |---|---|---|
 | `xlsx` | none (the tarball is added to npm's cache) | npm finds it by its checksum instead of downloading it |
 | `sqlite3` | `npm_config_sqlite3_local_prebuilds` | sqlite3 uses the local binary instead of downloading one (only needed during the install) |
+| `odbc` | none (npm installs without running scripts, the installer unpacks the binary into `node_modules/odbc`, then `npm rebuild` runs the held-back scripts) | odbc finds its binary and does not download or compile one |
 | `prisma` | `PRISMA_QUERY_ENGINE_LIBRARY`, `PRISMA_SCHEMA_ENGINE_BINARY`, `PRISMA_ENGINES_CHECKSUM_IGNORE_MISSING=1` | Prisma uses the local engines instead of downloading them |
 
 After `install prisma` (or all three), keep the Prisma settings set in the shell you start the project from: `prisma generate` and `prisma migrate` need them too. The installer prints the exact lines to paste, with `setx` for Windows.
@@ -57,13 +60,15 @@ After `install prisma` (or all three), keep the Prisma settings set in the shell
 
 ## What is included
 
-| Platform | sqlite3 | Prisma engines |
-|---|---|---|
-| Windows x64 | yes | `windows` |
-| Linux x64, glibc, OpenSSL 3 (Ubuntu 22.04+, Debian 12+) | yes | `debian-openssl-3.0.x` |
-| Linux x64, glibc, OpenSSL 3 (Amazon Linux 2023, RHEL 9) | yes | `rhel-openssl-3.0.x` |
-| macOS Apple silicon | yes | `darwin-arm64` |
-| macOS Intel | yes | `darwin` |
+| Platform | sqlite3 | odbc | Prisma engines |
+|---|---|---|---|
+| Windows x64 | yes | yes | `windows` |
+| Linux x64, glibc, OpenSSL 3 (Ubuntu 22.04+, Debian 12+) | yes | yes | `debian-openssl-3.0.x` |
+| Linux x64, glibc, OpenSSL 3 (Amazon Linux 2023, RHEL 9) | yes | yes | `rhel-openssl-3.0.x` |
+| macOS Apple silicon | yes | yes | `darwin-arm64` |
+| macOS Intel | yes | yes | `darwin` |
+
+`odbc` is the Node binding only. It needs an ODBC driver manager (built into Windows; `unixodbc` on Linux, `brew install unixodbc` on macOS) and the database's own ODBC driver (for example Microsoft ODBC Driver 18 for SQL Server). Those are separate installs and are not in this repository.
 
 Not included: Alpine (musl), Linux ARM, OpenSSL 1.x systems (Ubuntu 20.04, Amazon Linux 2), 32-bit. The installer stops with a message on those.
 
@@ -71,8 +76,8 @@ Not included: Alpine (musl), Linux ARM, OpenSSL 1.x systems (Ubuntu 20.04, Amazo
 
 - Every file's SHA-256 is in `manifest.json`; the installer verifies it before use.
 - The `xlsx` tarball's SHA-512 integrity is the one npm's lockfile records for `https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz`, so the copy in npm's cache is the one the lockfile expects.
-- The sqlite3 files are the release assets of `TryGhost/node-sqlite3` v6.0.1, unchanged. The Prisma engines are the files Prisma publishes for engines commit `c2990dca591cba766e3b7ef5d9e8a84796e47ab7`, compressed with gzip and unpacked and re-checked by the installer.
+- The odbc files are the release assets of `IBM/node-odbc` v2.5.0, unchanged. The sqlite3 files are the release assets of `TryGhost/node-sqlite3` v6.0.1, unchanged. The Prisma engines are the files Prisma publishes for engines commit `c2990dca591cba766e3b7ef5d9e8a84796e47ab7`, compressed with gzip and unpacked and re-checked by the installer.
 
 ## Licences
 
-The modules keep their own licences (SheetJS: Apache-2.0; node-sqlite3: BSD-3-Clause; Prisma and its engines: Apache-2.0), and their texts are in `licenses/`. See `NOTICE.md`.
+The modules keep their own licences (SheetJS: Apache-2.0; node-sqlite3: BSD-3-Clause; node-odbc: MIT; Prisma and its engines: Apache-2.0), and their texts are in `licenses/`. See `NOTICE.md`.

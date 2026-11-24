@@ -110,6 +110,32 @@
           }
         }
       }
+    },
+    "odbc": {
+      "version": "2.5.0",
+      "source": "https://github.com/IBM/node-odbc/releases/tag/v2.5.0",
+      "files": {
+        "darwin-arm64": {
+          "name": "odbc-v2.5.0-darwin-arm64-napi-v8.tar.gz",
+          "file": "files/odbc/odbc-v2.5.0-darwin-arm64-napi-v8.tar.gz",
+          "sha256": "72a457ca2460ceb67d345581beb9999c4d7a0251c5d429ff14b6948091c64fee"
+        },
+        "darwin-x64": {
+          "name": "odbc-v2.5.0-darwin-x64-napi-v8.tar.gz",
+          "file": "files/odbc/odbc-v2.5.0-darwin-x64-napi-v8.tar.gz",
+          "sha256": "914dc0c422f6164c7ad633600174f197b57c3f6a8de79ea7c569763e1bc39001"
+        },
+        "linux-x64": {
+          "name": "odbc-v2.5.0-linux-x64-napi-v8.tar.gz",
+          "file": "files/odbc/odbc-v2.5.0-linux-x64-napi-v8.tar.gz",
+          "sha256": "f6b0bb2de519c2ae5bf553963721845cbb367348c8f87b5c4d98a186175705b4"
+        },
+        "win32-x64": {
+          "name": "odbc-v2.5.0-win32-x64-napi-v8.tar.gz",
+          "file": "files/odbc/odbc-v2.5.0-win32-x64-napi-v8.tar.gz",
+          "sha256": "02a81a25bb13c57846fa915edf9164de07db46d9eeb398e79e93b6a5cae95837"
+        }
+      }
     }
   }
 }
