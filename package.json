@@ -1,0 +1,10 @@
+{
+  "name": "clane-offline-modules",
+  "version": "1.0.0",
+  "description": "Offline copies of npm modules that download files at install time (SheetJS xlsx, sqlite3's prebuilt binary, Prisma's engines), with an installer.",
+  "type": "module",
+  "bin": { "clane-offline-modules": "bin/install.mjs" },
+  "engines": { "node": ">=18" },
+  "repository": { "type": "git", "url": "git+https://github.com/clane-ai/clane-offline-modules.git" },
+  "license": "SEE LICENSE IN NOTICE.md"
+}

@@ -1,0 +1,115 @@
+{
+  "bundle": "1.0.0",
+  "modules": {
+    "xlsx": {
+      "version": "0.20.3",
+      "source": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz",
+      "file": "files/xlsx/xlsx-0.20.3.tgz",
+      "sha256": "8dc73fc3b00203e72d176e85b50938627c7b086e607c682e8d3c22c02bb99fe8",
+      "integrity": "sha512-oLDq3jw7AcLqKWH2AhCpVTZl8mf6X2YReP+Neh0SJUzV/BdZYjth94tG5toiMB1PPrYtxOCfaoUCkvtuH+3AJA=="
+    },
+    "sqlite3": {
+      "version": "6.0.1",
+      "source": "https://github.com/TryGhost/node-sqlite3/releases/tag/v6.0.1",
+      "files": {
+        "win32-x64": {
+          "name": "sqlite3-v6.0.1-napi-v6-win32-x64.tar.gz",
+          "file": "files/sqlite3/sqlite3-v6.0.1-napi-v6-win32-x64.tar.gz",
+          "sha256": "e0bbbb6e43b45378e6d6e2c5cc096e61e4c8932dbc2d2c9c08b8e3aaa80c9adf"
+        },
+        "linux-x64": {
+          "name": "sqlite3-v6.0.1-napi-v6-linux-x64.tar.gz",
+          "file": "files/sqlite3/sqlite3-v6.0.1-napi-v6-linux-x64.tar.gz",
+          "sha256": "3b2aba05ec737aeed4d686b7309df57b1c93a217c8d7f3a09aa952a87db071b6"
+        },
+        "darwin-arm64": {
+          "name": "sqlite3-v6.0.1-napi-v6-darwin-arm64.tar.gz",
+          "file": "files/sqlite3/sqlite3-v6.0.1-napi-v6-darwin-arm64.tar.gz",
+          "sha256": "65ddb932a774b7beaba9d97dc3c5a3750ae9405e96ee52b8ec9beec7c8eea597"
+        },
+        "darwin-x64": {
+          "name": "sqlite3-v6.0.1-napi-v6-darwin-x64.tar.gz",
+          "file": "files/sqlite3/sqlite3-v6.0.1-napi-v6-darwin-x64.tar.gz",
+          "sha256": "04c9e612a9fce5f62f1a779b44cb75f4d944c02dde615dbd8a1dff51569a2570"
+        }
+      }
+    },
+    "prisma": {
+      "version": "6.19.3",
+      "enginesCommit": "c2990dca591cba766e3b7ef5d9e8a84796e47ab7",
+      "source": "https://binaries.prisma.sh/all_commits/c2990dca591cba766e3b7ef5d9e8a84796e47ab7/",
+      "targets": {
+        "windows": {
+          "query": {
+            "name": "query_engine-windows.dll.node",
+            "file": "files/prisma-6.19.3/query_engine-windows.dll.node.gz",
+            "sha256_gz": "6b38131ffdbdb92abe46178008f31a80da36e64aaa900f220d551217a60e2291",
+            "sha256": "263946105f428384d2318dc3241b85b1c3dd98fbb1bfac62d3e81f513ab35897"
+          },
+          "schema": {
+            "name": "schema-engine-windows.exe",
+            "file": "files/prisma-6.19.3/schema-engine-windows.exe.gz",
+            "sha256_gz": "cb6148aa06ccc83107c761da0192522ac713c3b0892eb194c915368f68688a9d",
+            "sha256": "f2b48e3ce8de8712c9dce6c71f952bec383fa472830b91bca8e64b4b51bf0dd7"
+          }
+        },
+        "debian-openssl-3.0.x": {
+          "query": {
+            "name": "libquery_engine-debian-openssl-3.0.x.so.node",
+            "file": "files/prisma-6.19.3/libquery_engine-debian-openssl-3.0.x.so.node.gz",
+            "sha256_gz": "5b533a0ce54361d189d29925f3b69370dea5a8e6480cf96c6f0530750646edbf",
+            "sha256": "a2924eab1c78a0a7bb67edac5738939fa10589ef073af5542f53812a22e4a7d8"
+          },
+          "schema": {
+            "name": "schema-engine-debian-openssl-3.0.x",
+            "file": "files/prisma-6.19.3/schema-engine-debian-openssl-3.0.x.gz",
+            "sha256_gz": "5f5dfe262368a90a7f63ce26558fa6bd57bc52f143112e3d2204907789bcd552",
+            "sha256": "5d42b181631fd20bb0ecc5abcdba72575e7f467a0d52f4d5ef1ff28f0c74e6e9"
+          }
+        },
+        "rhel-openssl-3.0.x": {
+          "query": {
+            "name": "libquery_engine-rhel-openssl-3.0.x.so.node",
+            "file": "files/prisma-6.19.3/libquery_engine-rhel-openssl-3.0.x.so.node.gz",
+            "sha256_gz": "5b533a0ce54361d189d29925f3b69370dea5a8e6480cf96c6f0530750646edbf",
+            "sha256": "a2924eab1c78a0a7bb67edac5738939fa10589ef073af5542f53812a22e4a7d8"
+          },
+          "schema": {
+            "name": "schema-engine-rhel-openssl-3.0.x",
+            "file": "files/prisma-6.19.3/schema-engine-rhel-openssl-3.0.x.gz",
+            "sha256_gz": "5f5dfe262368a90a7f63ce26558fa6bd57bc52f143112e3d2204907789bcd552",
+            "sha256": "5d42b181631fd20bb0ecc5abcdba72575e7f467a0d52f4d5ef1ff28f0c74e6e9"
+          }
+        },
+        "darwin-arm64": {
+          "query": {
+            "name": "libquery_engine-darwin-arm64.dylib.node",
+            "file": "files/prisma-6.19.3/libquery_engine-darwin-arm64.dylib.node.gz",
+            "sha256_gz": "98e34492a3e503cabfb6e629871df79eeb06e2da94fca6cce02b796aa5c66a59",
+            "sha256": "afb9cb5a12ea42caa6f6498e40e9cb75059cae17098aadcc1001c99bb262e1ee"
+          },
+          "schema": {
+            "name": "schema-engine-darwin-arm64",
+            "file": "files/prisma-6.19.3/schema-engine-darwin-arm64.gz",
+            "sha256_gz": "fba05a2f7c3185a9198d4f20d88e4ec4a0b808e8be2ff6b76befb8f8820d1b55",
+            "sha256": "caa2cf90d5b2cfe6cc06e47974f7e3275dd395b4d35cf140d5d4b2362c3b5bb1"
+          }
+        },
+        "darwin": {
+          "query": {
+            "name": "libquery_engine-darwin.dylib.node",
+            "file": "files/prisma-6.19.3/libquery_engine-darwin.dylib.node.gz",
+            "sha256_gz": "13c85c88bfff0728e486a4443872d32c5aeb7c3a995c797253d691a7158e6611",
+            "sha256": "58840bd6287718edd608b7dd3cd60b60f58473adadfbbbb1b3b7de3a3f1f099c"
+          },
+          "schema": {
+            "name": "schema-engine-darwin",
+            "file": "files/prisma-6.19.3/schema-engine-darwin.gz",
+            "sha256_gz": "de85c20e714e3a5aca9a4faf6aa1ee21f8895538c33eddfa4913bbadf9df49db",
+            "sha256": "1467ab824ce4fc5b5c9fc06d106b5b0830579c341b12f7856584795bc97fca84"
+          }
+        }
+      }
+    }
+  }
+}
