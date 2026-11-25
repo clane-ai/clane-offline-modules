@@ -136,6 +136,24 @@
           "sha256": "02a81a25bb13c57846fa915edf9164de07db46d9eeb398e79e93b6a5cae95837"
         }
       }
+    },
+    "cube": {
+      "version": "1.7.50",
+      "source": "https://github.com/cube-js/cube/releases/tag/v1.7.50",
+      "files": {
+        "win32-x64": {
+          "native": {
+            "name": "native-win32-x64-unknown-fallback.tar.gz",
+            "file": "files/cube/native-win32-x64-unknown-fallback.tar.gz",
+            "sha256": "2170cd0cfadcf98d1be1c828e167ff51735d26a51f1de989b198784f9247944f"
+          },
+          "store": {
+            "name": "cubestored-x86_64-pc-windows-msvc.tar.gz",
+            "file": "files/cube/cubestored-x86_64-pc-windows-msvc.tar.gz",
+            "sha256": "4a01a6f639ad4c31ce38b5242ac8d9bde9508851356299c7a6662537dda53501"
+          }
+        }
+      }
     }
   }
 }

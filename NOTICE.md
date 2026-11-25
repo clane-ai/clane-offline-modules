@@ -6,6 +6,7 @@ This repository redistributes unmodified third-party files, each under its own l
 |---|---|---|
 | `files/xlsx/` | SheetJS `xlsx` 0.20.3 | Apache-2.0 |
 | `files/sqlite3/` | `sqlite3` (node-sqlite3) 6.0.1, release builds | BSD-3-Clause (the SQLite library inside is public domain) |
+| `files/cube/` | Cube native addon and Cube Store 1.7.50, release builds | Apache-2.0 |
 | `files/odbc/` | `odbc` (node-odbc) 2.5.0, release builds | MIT |
 | `files/prisma-6.19.3/` | Prisma query and schema engines, engines commit `c2990dca591cba766e3b7ef5d9e8a84796e47ab7` | Apache-2.0 |
 
